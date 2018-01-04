@@ -1,8 +1,0 @@
-FROM tomcat:9-alpine
-
-RUN apk add --no-cache curl
-HEALTHCHECK --interval=5s --timeout=3s --start-period=15s --retries=3 \
-  CMD curl -s --fail -I http://localhost:8080/
-
-RUN rm -r webapps/*
-COPY target/spring-project.war webapps/ROOT.war
